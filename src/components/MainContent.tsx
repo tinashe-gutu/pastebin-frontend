@@ -1,4 +1,5 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import {
   IPasteInput,
   IFetchedPaste,
@@ -27,14 +28,29 @@ export default function MainContent({
     });
   };
 
+  const fetchePastes = async () => {
+    const response = await axios.get(
+      "https://zacgladman-zac-tinashe-pastebin-backend.onrender.com/pastes"
+    );
+    console.log(response);
+    setFetchedPastes(response.data);
+  };
+  console.log(fetchedPastes);
+  
+  useEffect(() => {
+    fetchePastes();
+  }, []);
   return (
     <>
-      <Homepage
-        pasteInput={pasteInput}
-        setPasteInput={handleInputChange}
-        setFetchedPaste={setFetchedPastes}
-      />
-      <SummaryList fetchedPastes={fetchedPastes} />
+      {navSelection === "homepage" ? (
+        <Homepage
+          pasteInput={pasteInput}
+          setPasteInput={handleInputChange}
+          setFetchedPaste={setFetchedPastes}
+        />
+      ) : (
+        <SummaryList fetchedPastes={fetchedPastes} />
+      )}
     </>
   );
 }
