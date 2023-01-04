@@ -14,7 +14,7 @@ export default function MainContent({
 }: IMainContent): JSX.Element {
   const [pasteInput, setPasteInput] = useState<IPasteInput>({
     title: "",
-    summary: "",
+    body: "",
   });
   const [fetchedPastes, setFetchedPastes] = useState<IFetchedPaste[]>([]);
 
@@ -23,22 +23,32 @@ export default function MainContent({
       if (e.target.name === "title") {
         return { ...pasteInput, title: e.target.value };
       } else {
-        return { ...pasteInput, summary: e.target.value };
+        return { ...pasteInput, body: e.target.value };
       }
     });
   };
 
-  const fetchePastes = async () => {
+  const fetchPastes = async () => {
     const response = await axios.get(
       "https://zacgladman-zac-tinashe-pastebin-backend.onrender.com/pastes"
     );
     console.log(response);
     setFetchedPastes(response.data);
   };
-  console.log(fetchedPastes);
-  
+  const handleSubmitPaste = async () => {
+    if (pasteInput.body.length > 0) {
+      await axios.post(
+        "https://zacgladman-zac-tinashe-pastebin-backend.onrender.com/pastes",
+        pasteInput
+      );
+      fetchPastes();
+    } else {
+      window.alert("Body must not be empty");
+    }
+  };
+
   useEffect(() => {
-    fetchePastes();
+    fetchPastes();
   }, []);
   return (
     <>
@@ -47,6 +57,7 @@ export default function MainContent({
           pasteInput={pasteInput}
           setPasteInput={handleInputChange}
           setFetchedPaste={setFetchedPastes}
+          handleSubmitPaste={handleSubmitPaste}
         />
       ) : (
         <SummaryList fetchedPastes={fetchedPastes} />
