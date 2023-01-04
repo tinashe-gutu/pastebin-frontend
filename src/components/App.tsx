@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Nav from "./Nav";
+import Footer from "./Footer";
 
 function App(): JSX.Element {
 
@@ -9,6 +10,7 @@ function App(): JSX.Element {
   return (
     <>
       <Nav setNavSelection={setNavSelection}/>
+      <Footer />
     </>
   );
 }

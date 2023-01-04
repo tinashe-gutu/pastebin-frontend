@@ -1,4 +1,4 @@
-import { setNavSelection } from "./utils/interfaces"
+import { setNavSelection } from "../utils/interfaces"
 interface INav {
     setNavSelection: setNavSelection
 }
