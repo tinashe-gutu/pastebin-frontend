@@ -2,7 +2,7 @@ export type setNavSelection = React.Dispatch<React.SetStateAction<string>>
 
 export interface IHomepage {
     pasteInput: IPasteInput,
-    setPasteInput: React.Dispatch<React.SetStateAction<IPasteInput>>,
+    setPasteInput: (e: inputEvent) => void,
     setFetchedPaste: React.Dispatch<React.SetStateAction<IFetchedPaste[]>>
 }
 
@@ -16,3 +16,5 @@ export interface IFetchedPaste {
     title?:string,
     summary:string
 }
+
+export type inputEvent = React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>
