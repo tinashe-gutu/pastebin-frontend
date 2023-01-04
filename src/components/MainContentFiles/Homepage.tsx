@@ -4,11 +4,17 @@ export default function Homepage({
   pasteInput,
   setPasteInput,
   setFetchedPaste,
+  handleSubmitPaste,
 }: IHomepage): JSX.Element {
   return (
     <>
       <div className="pasteContainer">
-        <form>
+        <form
+          onSubmit={(e) => {
+            handleSubmitPaste();
+            e.preventDefault();
+          }}
+        >
           <input
             type="text"
             placeholder="Title (optional)"
@@ -18,9 +24,10 @@ export default function Homepage({
           />
           <textarea
             name="pasteSummary"
-            value={pasteInput.summary}
+            value={pasteInput.body}
             onChange={(e) => setPasteInput(e)}
           ></textarea>
+          <input type="submit" />
         </form>
       </div>
     </>

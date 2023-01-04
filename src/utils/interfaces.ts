@@ -4,17 +4,18 @@ export interface IHomepage {
   pasteInput: IPasteInput;
   setPasteInput: (e: inputEvent) => void;
   setFetchedPaste: React.Dispatch<React.SetStateAction<IFetchedPaste[]>>;
+  handleSubmitPaste: () => Promise<void>;
 }
 
 export interface IPasteInput {
   title?: string;
-  summary: string;
+  body: string ;
 }
 
 export interface IFetchedPaste {
   id: number;
   title?: string;
-  summary: string;
+  body: string;
 }
 
 export type inputEvent =
