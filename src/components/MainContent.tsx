@@ -42,6 +42,10 @@ export default function MainContent({
         pasteInput
       );
       fetchPastes();
+      setPasteInput({
+        title: "",
+        body: "",
+      });
     } else {
       window.alert("Body must not be empty");
     }

@@ -28,3 +28,7 @@ export interface IMainContent {
 export interface ISummaryList {
   fetchedPastes: IFetchedPaste[];
 }
+
+export interface ISingleSummary {
+  paste: IFetchedPaste;
+}

@@ -1,7 +1,16 @@
 import { ISummaryList } from "../../utils/interfaces";
+import SingleSummary from "./SingleSummary";
 
 export default function SummaryList({
   fetchedPastes,
 }: ISummaryList): JSX.Element {
-  return <></>;
+  console.log(fetchedPastes);
+
+  return (
+    <div className="summaryListContainer">
+      {fetchedPastes.map((paste) => {
+        return <SingleSummary paste={paste} key={paste.id} />;
+      })}
+    </div>
+  );
 }
