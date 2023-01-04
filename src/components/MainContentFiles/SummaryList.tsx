@@ -1,6 +1,3 @@
-export default function SummaryList():JSX.Element {
-    return (
-        <>
-        </>
-    )
+export default function SummaryList(): JSX.Element {
+  return <></>;
 }

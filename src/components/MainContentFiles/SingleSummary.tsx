@@ -1,6 +1,3 @@
-export default function SingleSummary():JSX.Element {
-    return (
-        <>
-        </>
-    )
+export default function SingleSummary(): JSX.Element {
+  return <></>;
 }

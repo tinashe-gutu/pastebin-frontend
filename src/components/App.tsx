@@ -4,13 +4,11 @@ import Footer from "./Footer";
 import MainContent from "./MainContent";
 
 function App(): JSX.Element {
-
-  const [navSelection, setNavSelection] = useState('homepage')
-
+  const [navSelection, setNavSelection] = useState("homepage");
 
   return (
     <>
-      <Nav setNavSelection={setNavSelection}/>
+      <Nav setNavSelection={setNavSelection} />
       <MainContent />
       <Footer />
     </>
