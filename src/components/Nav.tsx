@@ -1,19 +1,23 @@
 import { setNavSelection } from "../utils/interfaces";
 interface INav {
   setNavSelection: setNavSelection;
+  navSelection: string;
 }
 
-export default function Nav({ setNavSelection }: INav): JSX.Element {
+export default function Nav({
+  setNavSelection,
+  navSelection,
+}: INav): JSX.Element {
   return (
     <nav>
       <button
-        className="homepageButton"
+        className={navSelection === "homepage" ? "active" : "homepage"}
         onClick={() => setNavSelection("homepage")}
       >
         homepage
       </button>
       <button
-        className="summaryButton"
+        className={navSelection === "summary" ? "active" : "summary"}
         onClick={() => setNavSelection("summary")}
       >
         pastes summary

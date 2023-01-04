@@ -1,0 +1,38 @@
+body {
+  font-family: "Montserrat";
+}
+
+nav button {
+  background-color: white;
+  border: none;
+  font-size: 22px;
+}
+
+.active {
+  border-bottom: 2px solid blue;
+  padding: 10px;
+  color: blue;
+}
+
+.singleSummary {
+  border: 1px solid grey;
+  padding-left: 200px;
+  padding-right: 200px;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  height: 11em;
+  line-height: 1.5em;
+  width: 60vw;
+}
+
+/* .singleSummary.expand {
+  max-height: fit-content;
+} */
+
+.pasteTitle {
+  font-size: 16px;
+}
