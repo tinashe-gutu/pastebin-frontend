@@ -9,7 +9,7 @@ export interface IHomepage {
 
 export interface IPasteInput {
   title?: string;
-  body: string ;
+  body: string;
 }
 
 export interface IFetchedPaste {
