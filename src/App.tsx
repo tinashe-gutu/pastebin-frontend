@@ -1,7 +1,16 @@
-import { greet } from "./utils/greet";
+import { useState } from "react";
+import Nav from "./Nav";
 
 function App(): JSX.Element {
-  return <h1>{greet("World")}</h1>;
+
+  const [navSelection, setNavSelection] = useState('homepage')
+
+
+  return (
+    <>
+      <Nav setNavSelection={setNavSelection}/>
+    </>
+  );
 }
 
 export default App;

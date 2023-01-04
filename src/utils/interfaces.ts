@@ -1,0 +1,1 @@
+export type setNavSelection = React.Dispatch<React.SetStateAction<string>>
