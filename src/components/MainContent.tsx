@@ -1,8 +1,16 @@
 import { useState } from "react";
-import { IPasteInput, IFetchedPaste, inputEvent } from "../utils/interfaces";
+import {
+  IPasteInput,
+  IFetchedPaste,
+  inputEvent,
+  IMainContent,
+} from "../utils/interfaces";
 import Homepage from "./MainContentFiles/Homepage";
+import SummaryList from "./MainContentFiles/SummaryList";
 
-export default function MainContent(): JSX.Element {
+export default function MainContent({
+  navSelection,
+}: IMainContent): JSX.Element {
   const [pasteInput, setPasteInput] = useState<IPasteInput>({
     title: "",
     summary: "",
@@ -26,6 +34,7 @@ export default function MainContent(): JSX.Element {
         setPasteInput={handleInputChange}
         setFetchedPaste={setFetchedPastes}
       />
+      <SummaryList fetchedPastes={fetchedPastes} />
     </>
   );
 }

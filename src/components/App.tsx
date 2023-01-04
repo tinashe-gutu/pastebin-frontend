@@ -9,7 +9,7 @@ function App(): JSX.Element {
   return (
     <>
       <Nav setNavSelection={setNavSelection} />
-      <MainContent />
+      <MainContent navSelection={navSelection} />
       <Footer />
     </>
   );

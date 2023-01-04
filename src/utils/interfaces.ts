@@ -20,3 +20,10 @@ export interface IFetchedPaste {
 export type inputEvent =
   | React.ChangeEvent<HTMLInputElement>
   | React.ChangeEvent<HTMLTextAreaElement>;
+
+export interface IMainContent {
+  navSelection: string;
+}
+export interface ISummaryList {
+  fetchedPastes: IFetchedPaste[];
+}
