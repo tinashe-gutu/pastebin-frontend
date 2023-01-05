@@ -31,4 +31,6 @@ export interface ISummaryList {
 
 export interface ISingleSummary {
   paste: IFetchedPaste;
+  isActive: boolean;
+  setActiveIndex: React.Dispatch<React.SetStateAction<number | undefined>>;
 }

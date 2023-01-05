@@ -14,7 +14,7 @@ nav button {
   color: blue;
 }
 
-.singleSummary {
+.defaultView {
   border: 1px solid grey;
   padding-left: 200px;
   padding-right: 200px;
@@ -27,6 +27,35 @@ nav button {
   height: 11em;
   line-height: 1.5em;
   width: 60vw;
+}
+
+.fullView {
+  border: 1px solid grey;
+  padding-left: 200px;
+  padding-right: 200px;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  height: fit-content;
+  line-height: 1.5em;
+  width: 60vw;
+}
+
+.pasteBody button {
+  background-color: #fff;
+  border: 1px solid #d5d9d9;
+  border-radius: 8px;
+  box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
+  box-sizing: border-box;
+  color: #0f1111;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
 }
 
 /* .singleSummary.expand {
