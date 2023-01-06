@@ -18,6 +18,7 @@ export default function MainContent({
     body: "",
   });
   const [fetchedPastes, setFetchedPastes] = useState<IFetchedPaste[]>([]);
+  const [activeIndex, SetActiveIndex] = useState<number>();
 
   const handleInputChange = (e: inputEvent) => {
     setPasteInput(() => {
@@ -60,7 +61,8 @@ export default function MainContent({
           handleSubmitPaste={handleSubmitPaste}
         />
       ) : (
-        <SummaryList fetchedPastes={fetchedPastes} />
+              isActive={activeIndex}
+              setActiveIndex={SetActiveIndex}
       )}
     </>
   );

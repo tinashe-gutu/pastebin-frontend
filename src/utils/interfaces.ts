@@ -27,6 +27,8 @@ export interface IMainContent {
 }
 export interface ISummaryList {
   fetchedPastes: IFetchedPaste[];
+  isActive: number | undefined;
+  setActiveIndex: React.Dispatch<React.SetStateAction<number | undefined>>;
 }
 
 export interface ISingleSummary {

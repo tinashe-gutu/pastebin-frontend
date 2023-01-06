@@ -4,6 +4,8 @@ import SingleSummary from "./SingleSummary";
 
 export default function SummaryList({
   fetchedPastes,
+  isActive,
+  setActiveIndex,
 }: ISummaryList): JSX.Element {
   const [activeIndex, SetActiveIndex] = useState<number>();
 
