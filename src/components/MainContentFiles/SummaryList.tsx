@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { ISummaryList } from "../../utils/interfaces";
 import SingleSummary from "./SingleSummary";
 
