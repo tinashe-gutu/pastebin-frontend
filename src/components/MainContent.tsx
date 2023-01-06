@@ -85,6 +85,7 @@ export default function MainContent({
               singleSummaryIndex={singleSummaryIndex}
               setSingleSummaryIndex={setSingleSummaryIndex}
               fetchedComments={fetchedComments}
+              fetchComments={fetchComments}
             />
           ))
       ) : (
@@ -103,6 +104,7 @@ export default function MainContent({
               setSingleSummaryIndex={setSingleSummaryIndex}
               isActive={activeIndex}
               setActiveIndex={SetActiveIndex}
+              fetchComments={fetchComments}
             />
           )}
         </>
