@@ -84,6 +84,7 @@ export default function MainContent({
               setActiveIndex={SetActiveIndex}
               singleSummaryIndex={singleSummaryIndex}
               setSingleSummaryIndex={setSingleSummaryIndex}
+              fetchedComments={fetchedComments}
             />
           ))
       ) : (

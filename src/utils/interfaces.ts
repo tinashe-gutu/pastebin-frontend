@@ -43,6 +43,7 @@ export interface ISingleSummary {
     React.SetStateAction<number | undefined>
   >;
   setActiveIndex: React.Dispatch<React.SetStateAction<number | undefined>>;
+  fetchedComments?: ISingleComment[];
 }
 
 export interface ISingleComment {

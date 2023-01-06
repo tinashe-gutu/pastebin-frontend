@@ -6,6 +6,7 @@ export default function SingleSummary({
   setActiveIndex,
   singleSummaryIndex,
   setSingleSummaryIndex,
+  fetchedComments,
 }: ISingleSummary): JSX.Element {
   const shortenedBody =
     paste.body.length > 640 ? paste.body.slice(0, 639) : undefined;
