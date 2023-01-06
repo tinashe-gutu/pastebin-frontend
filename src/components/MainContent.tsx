@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { baseUrl } from "../utils/envBaseURL";
 import {
   IPasteInput,
@@ -42,13 +42,13 @@ export default function MainContent({
     setFetchedPastes(response.data);
   };
 
-  const fetchComments = async () => {
+  const fetchComments = useCallback(async() => {
     const response = await axios.get(
       baseUrl + `/pastes/${singleSummaryIndex}/comments/`
     );
     console.log(response);
     setFetchedComments(response.data);
-  };
+  }, [singleSummaryIndex]);
 
   const handleSubmitPaste = async () => {
     if (pasteInput.body.length > 0) {
@@ -66,11 +66,12 @@ export default function MainContent({
   useEffect(() => {
     fetchPastes();
   }, []);
+  
   useEffect(() => {
     if (singleSummaryIndex !== undefined) {
       fetchComments();
     }
-  }, [singleSummaryIndex]);
+  }, [singleSummaryIndex, fetchComments]);
   return (
     <>
       {singleSummaryIndex !== undefined ? (
