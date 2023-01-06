@@ -9,19 +9,20 @@ export default function SingleSummary({
     paste.body.length > 640 ? paste.body.slice(0, 639) : undefined;
 
   return (
-    <div className={isActive ? "fullView" : "defaultView"}>
+      onClick={() => setSingleSummaryIndex(paste.id)}
+            e.stopPropagation();
       <h3 className="pasteTitle">{paste.title}</h3>
       <div className="pasteBody">
         {isActive ? (
           <p>
             {paste.body}
-            <button onClick={() => setActiveIndex(undefined)}>show less</button>
+                e.stopPropagation();
           </p>
         ) : (
           <p>
             {shortenedBody ?? paste.body}
             {shortenedBody && (
-              <button onClick={() => setActiveIndex(paste.id)}>[...]</button>
+                  e.stopPropagation();
             )}
           </p>
         )}

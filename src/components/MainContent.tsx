@@ -53,6 +53,21 @@ export default function MainContent({
   }, []);
   return (
     <>
+      {singleSummaryIndex !== undefined ? (
+        fetchedPastes
+          .filter((paste) => paste.id === singleSummaryIndex)
+          .map((paste) => (
+            <SingleSummary
+              paste={paste}
+              key={paste.id}
+              isActive={activeIndex === paste.id}
+              setActiveIndex={SetActiveIndex}
+              singleSummaryIndex={singleSummaryIndex}
+              setSingleSummaryIndex={setSingleSummaryIndex}
+            />
+          ))
+      ) : (
+        <>
       {navSelection === "homepage" ? (
         <Homepage
           pasteInput={pasteInput}
@@ -61,6 +76,8 @@ export default function MainContent({
           handleSubmitPaste={handleSubmitPaste}
         />
       ) : (
+              singleSummaryIndex={singleSummaryIndex}
+              setSingleSummaryIndex={setSingleSummaryIndex}
               isActive={activeIndex}
               setActiveIndex={SetActiveIndex}
       )}
