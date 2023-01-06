@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { baseUrl } from "../utils/envBaseURL";
 import {
   IPasteInput,
   IFetchedPaste,
@@ -29,18 +30,13 @@ export default function MainContent({
   };
 
   const fetchPastes = async () => {
-    const response = await axios.get(
-      "https://zacgladman-zac-tinashe-pastebin-backend.onrender.com/pastes"
-    );
+    const response = await axios.get(baseUrl + "/pastes");
     console.log(response);
     setFetchedPastes(response.data);
   };
   const handleSubmitPaste = async () => {
     if (pasteInput.body.length > 0) {
-      await axios.post(
-        "https://zacgladman-zac-tinashe-pastebin-backend.onrender.com/pastes",
-        pasteInput
-      );
+      await axios.post(baseUrl + "/pastes", pasteInput);
       fetchPastes();
       setPasteInput({
         title: "",
