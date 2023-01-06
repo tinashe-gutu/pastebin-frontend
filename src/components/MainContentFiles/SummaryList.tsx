@@ -1,12 +1,14 @@
-import { useState } from "react";
 import { ISummaryList } from "../../utils/interfaces";
 import SingleSummary from "./SingleSummary";
 
 export default function SummaryList({
   fetchedPastes,
+  singleSummaryIndex,
+  setSingleSummaryIndex,
+  isActive,
+  setActiveIndex,
+  fetchComments,
 }: ISummaryList): JSX.Element {
-  const [activeIndex, SetActiveIndex] = useState<number>();
-
   console.log(fetchedPastes);
 
   return (
@@ -16,8 +18,11 @@ export default function SummaryList({
           <SingleSummary
             paste={paste}
             key={paste.id}
-            isActive={activeIndex === paste.id}
-            setActiveIndex={SetActiveIndex}
+            isActive={isActive === paste.id}
+            setActiveIndex={setActiveIndex}
+            singleSummaryIndex={singleSummaryIndex}
+            setSingleSummaryIndex={setSingleSummaryIndex}
+            fetchComments={fetchComments}
           />
         );
       })}

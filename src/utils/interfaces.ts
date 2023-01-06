@@ -20,17 +20,41 @@ export interface IFetchedPaste {
 
 export type inputEvent =
   | React.ChangeEvent<HTMLInputElement>
-  | React.ChangeEvent<HTMLTextAreaElement>;
+  | React.ChangeEvent<HTMLTextAreaElement>
+  | React.ChangeEvent<HTMLInputElement>;
 
 export interface IMainContent {
   navSelection: string;
 }
 export interface ISummaryList {
   fetchedPastes: IFetchedPaste[];
+  singleSummaryIndex: number | undefined;
+  setSingleSummaryIndex: React.Dispatch<
+    React.SetStateAction<number | undefined>
+  >;
+  isActive: number | undefined;
+  setActiveIndex: React.Dispatch<React.SetStateAction<number | undefined>>;
+  fetchComments: () => Promise<void>;
 }
 
 export interface ISingleSummary {
   paste: IFetchedPaste;
   isActive: boolean;
+  singleSummaryIndex: number | undefined;
+  setSingleSummaryIndex: React.Dispatch<
+    React.SetStateAction<number | undefined>
+  >;
   setActiveIndex: React.Dispatch<React.SetStateAction<number | undefined>>;
+  fetchedComments?: ISingleComment[];
+  fetchComments: () => Promise<void>;
+}
+
+export interface InputComment {
+  username: string;
+  comment: string;
+}
+
+export interface ISingleComment extends InputComment {
+  comment_id: number;
+  paste_id: number;
 }
