@@ -70,7 +70,7 @@ export default function MainContent({
     if (singleSummaryIndex !== undefined) {
       fetchComments();
     }
-  }, [fetchedComments]);
+  }, [singleSummaryIndex]);
   return (
     <>
       {singleSummaryIndex !== undefined ? (
