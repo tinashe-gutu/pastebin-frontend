@@ -6,8 +6,10 @@ import {
   IFetchedPaste,
   inputEvent,
   IMainContent,
+  ISingleComment,
 } from "../utils/interfaces";
 import Homepage from "./MainContentFiles/Homepage";
+import SingleSummary from "./MainContentFiles/SingleSummary";
 import SummaryList from "./MainContentFiles/SummaryList";
 
 export default function MainContent({
@@ -18,7 +20,11 @@ export default function MainContent({
     body: "",
   });
   const [fetchedPastes, setFetchedPastes] = useState<IFetchedPaste[]>([]);
+  const [singleSummaryIndex, setSingleSummaryIndex] = useState<
+    number | undefined
+  >();
   const [activeIndex, SetActiveIndex] = useState<number>();
+  const [fetchedComments, setFetchedComments] = useState<ISingleComment[]>([]);
 
   const handleInputChange = (e: inputEvent) => {
     setPasteInput(() => {
@@ -35,6 +41,15 @@ export default function MainContent({
     console.log(response);
     setFetchedPastes(response.data);
   };
+
+  const fetchComments = async () => {
+    const response = await axios.get(
+      baseUrl + `/pastes/${singleSummaryIndex}/comments/`
+    );
+    console.log(response);
+    setFetchedComments(response.data);
+  };
+
   const handleSubmitPaste = async () => {
     if (pasteInput.body.length > 0) {
       await axios.post(baseUrl + "/pastes", pasteInput);
@@ -51,6 +66,11 @@ export default function MainContent({
   useEffect(() => {
     fetchPastes();
   }, []);
+  useEffect(() => {
+    if (singleSummaryIndex !== undefined) {
+      fetchComments();
+    }
+  }, [fetchedComments]);
   return (
     <>
       {singleSummaryIndex !== undefined ? (
@@ -68,18 +88,23 @@ export default function MainContent({
           ))
       ) : (
         <>
-      {navSelection === "homepage" ? (
-        <Homepage
-          pasteInput={pasteInput}
-          setPasteInput={handleInputChange}
-          setFetchedPaste={setFetchedPastes}
-          handleSubmitPaste={handleSubmitPaste}
-        />
-      ) : (
+          {navSelection === "homepage" ? (
+            <Homepage
+              pasteInput={pasteInput}
+              setPasteInput={handleInputChange}
+              setFetchedPaste={setFetchedPastes}
+              handleSubmitPaste={handleSubmitPaste}
+            />
+          ) : (
+            <SummaryList
+              fetchedPastes={fetchedPastes}
               singleSummaryIndex={singleSummaryIndex}
               setSingleSummaryIndex={setSingleSummaryIndex}
               isActive={activeIndex}
               setActiveIndex={SetActiveIndex}
+            />
+          )}
+        </>
       )}
     </>
   );

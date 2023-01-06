@@ -27,6 +27,10 @@ export interface IMainContent {
 }
 export interface ISummaryList {
   fetchedPastes: IFetchedPaste[];
+  singleSummaryIndex: number | undefined;
+  setSingleSummaryIndex: React.Dispatch<
+    React.SetStateAction<number | undefined>
+  >;
   isActive: number | undefined;
   setActiveIndex: React.Dispatch<React.SetStateAction<number | undefined>>;
 }
@@ -34,5 +38,16 @@ export interface ISummaryList {
 export interface ISingleSummary {
   paste: IFetchedPaste;
   isActive: boolean;
+  singleSummaryIndex: number | undefined;
+  setSingleSummaryIndex: React.Dispatch<
+    React.SetStateAction<number | undefined>
+  >;
   setActiveIndex: React.Dispatch<React.SetStateAction<number | undefined>>;
+}
+
+export interface ISingleComment {
+  comment_id: number;
+  paste_id: number;
+  comment: string;
+  username: string;
 }
