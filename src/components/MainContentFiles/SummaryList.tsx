@@ -7,6 +7,7 @@ export default function SummaryList({
   setSingleSummaryIndex,
   isActive,
   setActiveIndex,
+  fetchComments,
 }: ISummaryList): JSX.Element {
   console.log(fetchedPastes);
 
@@ -21,6 +22,7 @@ export default function SummaryList({
             setActiveIndex={setActiveIndex}
             singleSummaryIndex={singleSummaryIndex}
             setSingleSummaryIndex={setSingleSummaryIndex}
+            fetchComments={fetchComments}
           />
         );
       })}
