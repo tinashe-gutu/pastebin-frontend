@@ -65,3 +65,45 @@ nav button {
 .pasteTitle {
   font-size: 16px;
 }
+
+textarea {
+  height: 70vh;
+  width: 50vw;
+}
+
+form {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  gap: 10px;
+  justify-items: center;
+}
+
+.titleInput {
+  width: 50vw;
+  height: 5vh;
+}
+
+.submitPaste {
+  width: 20vw;
+  height: 5vh;
+  background-color: #fff;
+  border: 1px solid #b8b8b8;
+  border-radius: 8px;
+  box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
+  box-sizing: border-box;
+  color: #0f1111;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.pasteContainer {
+  display: flex;
+  margin: 10px;
+  justify-content: center;
+}
