@@ -1,21 +1,10 @@
-import axios from "axios";
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { baseUrl } from "../../utils/envBaseURL";
-import {
-  InputComment,
-  inputEvent,
-  ISingleSummary,
-} from "../../utils/interfaces";
+import { ISingleSummary } from "../../utils/interfaces";
 
 export default function SingleSummary({
   paste,
   isActive,
   setActiveIndex,
-  singleSummaryIndex,
-  setSingleSummaryIndex,
-  fetchedComments,
-  fetchComments,
 }: ISingleSummary): JSX.Element {
   const shortenedBody =
     paste.body.length > 640 ? paste.body.slice(0, 639) : undefined;
@@ -23,7 +12,9 @@ export default function SingleSummary({
   return (
     <>
       <div className={isActive ? "fullView" : "defaultView"}>
-        <h3 className="pasteTitle">{paste.title}</h3>
+        <h3 className="pasteTitle">
+          {paste.title ? paste.title : "--no title--"}
+        </h3>
         <div className="pasteBody">
           {isActive ? (
             <p>
@@ -53,7 +44,9 @@ export default function SingleSummary({
             </p>
           )}
         </div>
-        <Link to={`singleSummary/${paste.id}`}>Comments</Link>
+        <Link className="commentLink" to={`singleSummary/${paste.id}`}>
+          view comments
+        </Link>
       </div>
     </>
   );

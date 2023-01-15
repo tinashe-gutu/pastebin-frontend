@@ -2,6 +2,13 @@ body {
   font-family: "Montserrat";
 }
 
+.navLink {
+  text-decoration: none;
+}
+.navLink:visited {
+  color: black;
+}
+
 nav button {
   background-color: white;
   border: none;
@@ -9,6 +16,12 @@ nav button {
 }
 
 .active {
+  border-bottom: 2px solid blue;
+  padding: 10px;
+  color: blue;
+}
+
+.active:visited {
   border-bottom: 2px solid blue;
   padding: 10px;
   color: blue;
@@ -24,7 +37,7 @@ nav button {
   text-overflow: ellipsis;
   word-wrap: break-word;
   overflow: hidden;
-  height: 15em;
+  height: 21em;
   line-height: 1.5em;
   width: 60vw;
 }
@@ -129,4 +142,13 @@ form {
 /* selected link */
 .singleSummaryLink:active {
   color: black;
+}
+
+.commentLink {
+  text-decoration: none;
+  color: rgb(56, 56, 56);
+}
+
+.commentLink:visited {
+  color: rgb(56, 56, 56);
 }

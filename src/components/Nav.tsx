@@ -1,5 +1,5 @@
 import { setNavSelection } from "../utils/interfaces";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 interface INav {
   setNavSelection: setNavSelection;
   navSelection: string;
@@ -11,8 +11,12 @@ export default function Nav({
 }: INav): JSX.Element {
   return (
     <nav>
-      <NavLink to="/">homepage</NavLink>
-      <NavLink to="summary">summary list</NavLink>
+      <NavLink className="navLink" to="/">
+        homepage
+      </NavLink>
+      <NavLink className="navLink" to="summary">
+        summary list
+      </NavLink>
     </nav>
   );
 }
