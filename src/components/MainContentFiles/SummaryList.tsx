@@ -9,7 +9,6 @@ export default function SummaryList({
   setActiveIndex,
   fetchComments,
 }: ISummaryList): JSX.Element {
-
   return (
     <div className="summaryListContainer">
       {fetchedPastes.map((paste) => {
