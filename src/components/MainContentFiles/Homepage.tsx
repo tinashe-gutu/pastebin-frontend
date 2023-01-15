@@ -27,6 +27,7 @@ export default function Homepage({
           value={pasteInput.body}
           onChange={(e) => setPasteInput(e)}
           placeholder="Enter Paste"
+          required
         ></textarea>
         <input type="submit" className="submitPaste" />
       </form>

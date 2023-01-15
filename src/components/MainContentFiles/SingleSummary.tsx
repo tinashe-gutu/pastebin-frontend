@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { baseUrl } from "../../utils/envBaseURL";
 import {
   InputComment,
@@ -18,37 +19,10 @@ export default function SingleSummary({
 }: ISingleSummary): JSX.Element {
   const shortenedBody =
     paste.body.length > 640 ? paste.body.slice(0, 639) : undefined;
-  const [inputComment, setInputComment] = useState<InputComment>({
-    username: "",
-    comment: "",
-  });
-
-  const handleCommentChange = (e: inputEvent) => {
-    setInputComment(() => {
-      return { ...inputComment, [e.target.name]: e.target.value };
-    });
-  };
-  const handleSubmitComment = async () => {
-    await axios.post(baseUrl + `/pastes/${paste.id}/comments`, inputComment);
-    fetchComments();
-  };
 
   return (
     <>
-      <div
-        className={isActive ? "fullView" : "defaultView"}
-        onClick={() => setSingleSummaryIndex(paste.id)}
-      >
-        {singleSummaryIndex && (
-          <button
-            onClick={(e) => {
-              setSingleSummaryIndex(undefined);
-              e.stopPropagation();
-            }}
-          >
-            return to pastes summary
-          </button>
-        )}
+      <div className={isActive ? "fullView" : "defaultView"}>
         <h3 className="pasteTitle">{paste.title}</h3>
         <div className="pasteBody">
           {isActive ? (
@@ -79,46 +53,8 @@ export default function SingleSummary({
             </p>
           )}
         </div>
+        <Link to={`singleSummary/${paste.id}`}>Comments</Link>
       </div>
-      {singleSummaryIndex && (
-        <div className="commentSection">
-          <h4>comments</h4>
-          <form
-            onSubmit={(e) => {
-              handleSubmitComment();
-              e.preventDefault();
-            }}
-          >
-            <input
-              type="text"
-              placeholder="username"
-              required
-              value={inputComment.username}
-              name="username"
-              onChange={(e) => handleCommentChange(e)}
-            />
-            <input
-              type="text"
-              placeholder="add comment"
-              required
-              value={inputComment.comment}
-              name="comment"
-              onChange={(e) => handleCommentChange(e)}
-            />
-            <input type="submit" />
-          </form>
-          <ul className="commentsList">
-            {fetchedComments &&
-              fetchedComments.map((comment) => {
-                return (
-                  <li key={comment.comment_id}>
-                    {comment.username}: {comment.comment}
-                  </li>
-                );
-              })}
-          </ul>
-        </div>
-      )}
     </>
   );
 }

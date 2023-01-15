@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { baseUrl } from "../utils/envBaseURL";
+
 import {
   IPasteInput,
   IFetchedPaste,
@@ -9,8 +10,9 @@ import {
   ISingleComment,
 } from "../utils/interfaces";
 import Homepage from "./MainContentFiles/Homepage";
-import SingleSummary from "./MainContentFiles/SingleSummary";
 import SummaryList from "./MainContentFiles/SummaryList";
+import { Route, Routes } from "react-router-dom";
+import { FullSummary } from "./MainContentFiles/FullSummary";
 
 export default function MainContent({
   navSelection,
@@ -43,6 +45,7 @@ export default function MainContent({
   };
 
   const fetchComments = useCallback(async () => {
+    console.log(singleSummaryIndex);
     const response = await axios.get(
       baseUrl + `/pastes/${singleSummaryIndex}/comments/`
     );
@@ -51,16 +54,12 @@ export default function MainContent({
   }, [singleSummaryIndex]);
 
   const handleSubmitPaste = async () => {
-    if (pasteInput.body.length > 0) {
-      await axios.post(baseUrl + "/pastes", pasteInput);
-      fetchPastes();
-      setPasteInput({
-        title: "",
-        body: "",
-      });
-    } else {
-      window.alert("Body must not be empty");
-    }
+    await axios.post(baseUrl + "/pastes", pasteInput);
+    fetchPastes();
+    setPasteInput({
+      title: "",
+      body: "",
+    });
   };
 
   useEffect(() => {
@@ -74,31 +73,21 @@ export default function MainContent({
   }, [singleSummaryIndex, fetchComments]);
   return (
     <>
-      {singleSummaryIndex !== undefined ? (
-        fetchedPastes
-          .filter((paste) => paste.id === singleSummaryIndex)
-          .map((paste) => (
-            <SingleSummary
-              paste={paste}
-              key={paste.id}
-              isActive={activeIndex === paste.id}
-              setActiveIndex={SetActiveIndex}
-              singleSummaryIndex={singleSummaryIndex}
-              setSingleSummaryIndex={setSingleSummaryIndex}
-              fetchedComments={fetchedComments}
-              fetchComments={fetchComments}
-            />
-          ))
-      ) : (
-        <>
-          {navSelection === "homepage" ? (
+      <Routes>
+        <Route
+          path="/"
+          element={
             <Homepage
               pasteInput={pasteInput}
               setPasteInput={handleInputChange}
               setFetchedPaste={setFetchedPastes}
               handleSubmitPaste={handleSubmitPaste}
             />
-          ) : (
+          }
+        />
+        <Route
+          path="/summary"
+          element={
             <SummaryList
               fetchedPastes={fetchedPastes}
               singleSummaryIndex={singleSummaryIndex}
@@ -107,9 +96,19 @@ export default function MainContent({
               setActiveIndex={SetActiveIndex}
               fetchComments={fetchComments}
             />
-          )}
-        </>
-      )}
+          }
+        />
+        <Route
+          path="/summary/singleSummary/:pasteId"
+          element={
+            <FullSummary
+              fetchComments={fetchComments}
+              fetchedComments={fetchedComments}
+              fetchedPaste={fetchedPastes}
+            />
+          }
+        />
+      </Routes>
     </>
   );
 }

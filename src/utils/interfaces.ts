@@ -58,3 +58,9 @@ export interface ISingleComment extends InputComment {
   comment_id: number;
   paste_id: number;
 }
+
+export interface IFullSummary {
+  fetchedPaste: IFetchedPaste[];
+  fetchedComments: ISingleComment[];
+  fetchComments: () => Promise<void>;
+}

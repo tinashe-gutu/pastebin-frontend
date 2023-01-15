@@ -107,3 +107,26 @@ form {
   margin: 10px;
   justify-content: center;
 }
+
+.singleSummaryLink {
+  text-decoration: none;
+}
+
+.singleSummaryLink:link {
+  color: black;
+}
+
+/* visited link */
+.singleSummaryLink:visited {
+  color: black;
+}
+
+/* mouse over link */
+.singleSummaryLink:hover {
+  color: black;
+}
+
+/* selected link */
+.singleSummaryLink:active {
+  color: black;
+}
