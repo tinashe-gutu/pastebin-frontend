@@ -15,6 +15,7 @@ export function FullSummary({
     if (params.pasteId) {
       return paste.id === parseInt(params.pasteId);
     }
+    return false
   })[0];
   const [inputComment, setInputComment] = useState<InputComment>({
     username: "",

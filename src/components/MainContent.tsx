@@ -40,16 +40,13 @@ export default function MainContent({
 
   const fetchPastes = async () => {
     const response = await axios.get(baseUrl + "/pastes");
-    console.log(response);
     setFetchedPastes(response.data);
   };
 
   const fetchComments = useCallback(async () => {
-    console.log(singleSummaryIndex);
     const response = await axios.get(
       baseUrl + `/pastes/${singleSummaryIndex}/comments/`
     );
-    console.log(response);
     setFetchedComments(response.data);
   }, [singleSummaryIndex]);
 

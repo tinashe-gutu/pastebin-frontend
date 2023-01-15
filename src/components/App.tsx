@@ -3,10 +3,7 @@ import Nav from "./Nav";
 import Footer from "./Footer";
 import MainContent from "./MainContent";
 import "./App.css";
-import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom";
-import Homepage from "./MainContentFiles/Homepage";
-import SummaryList from "./MainContentFiles/SummaryList";
-
+import { BrowserRouter } from "react-router-dom";
 
 function App(): JSX.Element {
   const [navSelection, setNavSelection] = useState("homepage");
