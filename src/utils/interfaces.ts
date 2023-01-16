@@ -63,4 +63,5 @@ export interface IFullSummary {
   fetchedPaste: IFetchedPaste[];
   fetchedComments: ISingleComment[];
   fetchComments: () => Promise<void>;
+  fetchPastes: () => Promise<void>;
 }

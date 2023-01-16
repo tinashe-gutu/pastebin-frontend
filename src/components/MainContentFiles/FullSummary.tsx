@@ -9,13 +9,13 @@ export function FullSummary({
   fetchComments,
   fetchedComments,
 }: IFullSummary): JSX.Element {
-  console.log(fetchedPaste);
+  console.log(fetchedPaste, "comments:", fetchedComments);
   const params = useParams();
   const paste = fetchedPaste.filter((paste) => {
     if (params.pasteId) {
       return paste.id === parseInt(params.pasteId);
     }
-    return false;
+      return false;
   })[0];
   const [inputComment, setInputComment] = useState<InputComment>({
     username: "",
@@ -27,7 +27,10 @@ export function FullSummary({
     });
   };
   const handleSubmitComment = async () => {
-    await axios.post(baseUrl + `/pastes/${paste.id}/comments`, inputComment);
+    await axios.post(
+      baseUrl + `/pastes/${params.pasteId}/comments`,
+      inputComment
+    );
     fetchComments();
   };
   return (

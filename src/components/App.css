@@ -4,6 +4,7 @@ body {
 
 .navLink {
   text-decoration: none;
+  color: black;
 }
 .navLink:visited {
   color: black;

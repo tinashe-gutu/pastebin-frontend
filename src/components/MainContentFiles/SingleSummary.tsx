@@ -5,6 +5,7 @@ export default function SingleSummary({
   paste,
   isActive,
   setActiveIndex,
+  setSingleSummaryIndex,
 }: ISingleSummary): JSX.Element {
   const shortenedBody =
     paste.body.length > 640 ? paste.body.slice(0, 639) : undefined;
@@ -44,7 +45,11 @@ export default function SingleSummary({
             </p>
           )}
         </div>
-        <Link className="commentLink" to={`singleSummary/${paste.id}`}>
+        <Link
+          className="commentLink"
+          to={`singleSummary/${paste.id}`}
+          onClick={() => setSingleSummaryIndex(paste.id)}
+        >
           view comments
         </Link>
       </div>

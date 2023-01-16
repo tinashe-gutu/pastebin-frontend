@@ -21,12 +21,20 @@ export default function MainContent({
     title: "",
     body: "",
   });
+  console.log("In main content");
   const [fetchedPastes, setFetchedPastes] = useState<IFetchedPaste[]>([]);
   const [singleSummaryIndex, setSingleSummaryIndex] = useState<
     number | undefined
   >();
   const [activeIndex, SetActiveIndex] = useState<number>();
-  const [fetchedComments, setFetchedComments] = useState<ISingleComment[]>([]);
+  const [fetchedComments, setFetchedComments] = useState<ISingleComment[]>([
+    {
+      username: "Tinashe",
+      comment: "Initial comment state",
+      comment_id: 100,
+      paste_id: 2,
+    },
+  ]);
 
   const handleInputChange = (e: inputEvent) => {
     setPasteInput(() => {
@@ -38,16 +46,18 @@ export default function MainContent({
     });
   };
 
-  const fetchPastes = async () => {
+  const fetchPastes = useCallback(async () => {
     const response = await axios.get(baseUrl + "/pastes");
     setFetchedPastes(response.data);
-  };
+  }, []);
 
   const fetchComments = useCallback(async () => {
-    const response = await axios.get(
-      baseUrl + `/pastes/${singleSummaryIndex}/comments/`
-    );
-    setFetchedComments(response.data);
+    if (singleSummaryIndex) {
+      const response = await axios.get(
+        baseUrl + `/pastes/${singleSummaryIndex}/comments/`
+      );
+      setFetchedComments(response.data);
+    }
   }, [singleSummaryIndex]);
 
   const handleSubmitPaste = async () => {
@@ -60,13 +70,13 @@ export default function MainContent({
   };
 
   useEffect(() => {
+    console.log("fetching PASTES via useEffect");
     fetchPastes();
-  }, []);
+  }, [fetchPastes]);
 
   useEffect(() => {
-    if (singleSummaryIndex !== undefined) {
-      fetchComments();
-    }
+    console.log("Fetching COMMENTS in main via useEffect");
+    fetchComments();
   }, [singleSummaryIndex, fetchComments]);
   return (
     <>
@@ -102,6 +112,7 @@ export default function MainContent({
               fetchComments={fetchComments}
               fetchedComments={fetchedComments}
               fetchedPaste={fetchedPastes}
+              fetchPastes={fetchPastes}
             />
           }
         />
