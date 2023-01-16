@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { baseUrl } from "../../utils/envBaseURL";
 import { IFullSummary, InputComment, inputEvent } from "../../utils/interfaces";
@@ -8,6 +8,7 @@ export function FullSummary({
   fetchedPaste,
   fetchComments,
   fetchedComments,
+  fetchPastes,
 }: IFullSummary): JSX.Element {
   console.log(fetchedPaste, "comments:", fetchedComments);
   const params = useParams();
@@ -15,7 +16,7 @@ export function FullSummary({
     if (params.pasteId) {
       return paste.id === parseInt(params.pasteId);
     }
-      return false;
+    return false;
   })[0];
   const [inputComment, setInputComment] = useState<InputComment>({
     username: "",
@@ -33,6 +34,7 @@ export function FullSummary({
     );
     fetchComments();
   };
+
   return (
     <>
       <div className="pasteBody">
