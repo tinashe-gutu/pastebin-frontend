@@ -43,15 +43,10 @@ export default function MainContent({
     setFetchedPastes(response.data);
   };
 
-  const fetchComments = useCallback(
-    async (pasteId: string) => {
-      const response = await axios.get(
-        baseUrl + `/pastes/${pasteId}/comments/`
-      );
-      setFetchedComments(response.data);
-    },
-    [singleSummaryIndex]
-  );
+  const fetchComments = useCallback(async (pasteId: string) => {
+    const response = await axios.get(baseUrl + `/pastes/${pasteId}/comments/`);
+    setFetchedComments(response.data);
+  }, []);
 
   const handleSubmitPaste = async () => {
     await axios.post(baseUrl + "/pastes", pasteInput);

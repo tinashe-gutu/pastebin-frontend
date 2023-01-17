@@ -3,7 +3,6 @@ import { IHomepage } from "../../utils/interfaces";
 export default function Homepage({
   pasteInput,
   setPasteInput,
-  setFetchedPaste,
   handleSubmitPaste,
 }: IHomepage): JSX.Element {
   return (

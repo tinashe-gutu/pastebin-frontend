@@ -15,7 +15,7 @@ export function FullSummary({
     if (params.pasteId) {
       fetchComments(params.pasteId);
     }
-  }, [fetchComments]);
+  }, [fetchComments, params.pasteId]);
 
   const paste = fetchedPaste.filter((paste) => {
     if (params.pasteId) {

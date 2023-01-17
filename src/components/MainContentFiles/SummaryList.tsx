@@ -19,7 +19,6 @@ export default function SummaryList({
             setActiveIndex={setActiveIndex}
             singleSummaryIndex={singleSummaryIndex}
             setSingleSummaryIndex={setSingleSummaryIndex}
-
           />
         );
       })}
