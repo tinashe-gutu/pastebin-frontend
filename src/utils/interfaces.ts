@@ -34,7 +34,6 @@ export interface ISummaryList {
   >;
   isActive: number | undefined;
   setActiveIndex: React.Dispatch<React.SetStateAction<number | undefined>>;
-  fetchComments: () => Promise<void>;
 }
 
 export interface ISingleSummary {
@@ -45,8 +44,6 @@ export interface ISingleSummary {
     React.SetStateAction<number | undefined>
   >;
   setActiveIndex: React.Dispatch<React.SetStateAction<number | undefined>>;
-  fetchedComments?: ISingleComment[];
-  fetchComments: () => Promise<void>;
 }
 
 export interface InputComment {
@@ -62,5 +59,5 @@ export interface ISingleComment extends InputComment {
 export interface IFullSummary {
   fetchedPaste: IFetchedPaste[];
   fetchedComments: ISingleComment[];
-  fetchComments: () => Promise<void>;
+  fetchComments: (pasteId: string) => Promise<void>;
 }
