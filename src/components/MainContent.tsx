@@ -63,11 +63,6 @@ export default function MainContent({
     fetchPastes();
   }, []);
 
-  useEffect(() => {
-    if (singleSummaryIndex !== undefined) {
-      fetchComments();
-    }
-  }, [singleSummaryIndex, fetchComments]);
   return (
     <>
       <Routes>
