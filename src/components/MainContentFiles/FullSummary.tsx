@@ -11,6 +11,13 @@ export function FullSummary({
 }: IFullSummary): JSX.Element {
   console.log(fetchedPaste);
   const params = useParams();
+
+  useEffect(() => {
+    if (params.pasteId) {
+      fetchComments(params.pasteId);
+    }
+  }, [fetchComments]);
+
   const paste = fetchedPaste.filter((paste) => {
     if (params.pasteId) {
       return paste.id === parseInt(params.pasteId);
