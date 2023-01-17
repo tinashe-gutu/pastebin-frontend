@@ -32,6 +32,8 @@ export function FullSummary({
   };
   return (
     <>
+      {paste && fetchedComments && (
+        <>
       <div className="pasteBody">
         <h3 className="pasteTitle">{paste.title}</h3>
         <p>{paste.body}</p>
@@ -73,6 +75,8 @@ export function FullSummary({
             })}
         </ul>
       </div>
+        </>
+      )}
     </>
   );
 }
