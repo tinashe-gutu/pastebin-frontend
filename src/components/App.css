@@ -152,3 +152,15 @@ form {
 .commentLink:visited {
   color: rgb(56, 56, 56);
 }
+
+.pasteBody {
+  border: 1px solid black;
+}
+
+.commentSection {
+  border: 1px solid black;
+}
+
+.commentsList {
+  list-style: none;
+}
