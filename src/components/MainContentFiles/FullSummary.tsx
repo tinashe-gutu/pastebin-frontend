@@ -80,7 +80,7 @@ export function FullSummary({
                 fetchedComments.map((comment) => {
                   return (
                     <li key={comment.comment_id}>
-                      {comment.username}: {comment.comment}
+                      <b>{comment.username}</b>: {comment.comment}
                     </li>
                   );
                 })}
